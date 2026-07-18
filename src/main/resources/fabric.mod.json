@@ -1,0 +1,32 @@
+{
+	"schemaVersion": 1,
+	"id": "cobblewatch-core",
+	"version": "${version}",
+	"name": "Cobblewatch: Core",
+	"description": "Core mod for extend Cobblewatch modpack utilities.",
+	"authors": [
+		"ludwici"
+	],
+	"contact": {
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/cobblewatch-core",
+		"sources": "https://github.com/ludwici/CobblewatchCore"
+	},
+	"license": "GPLv3",
+	"icon": "assets/cobblewatch-core/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.ludwici.cobblewatchcore.CobblewatchCore"
+		]
+	},
+	"mixins": [
+		"cobblewatch-core.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*",
+		"cobblemon": ">=1.7.3"
+	}
+}
