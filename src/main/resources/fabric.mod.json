@@ -17,6 +17,9 @@
 	"entrypoints": {
 		"main": [
 			"com.ludwici.cobblewatchcore.CobblewatchCore"
+		],
+		"client": [
+			"com.ludwici.cobblewatchcore.CobblewatchCoreClient"
 		]
 	},
 	"mixins": [

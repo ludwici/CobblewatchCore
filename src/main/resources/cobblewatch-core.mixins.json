@@ -3,6 +3,7 @@
   "package": "com.ludwici.cobblewatchcore.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "server.CapsuleItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1
