@@ -45,10 +45,11 @@ dependencies {
 
 	modImplementation "com.cobblemon:fabric:$rootProject.cobblemon_version"
 
-	modImplementation("dev.obscuria:fragmentum-fabric:${minecraft_version}-${fragmentum_version}")
+//	modImplementation("dev.obscuria:fragmentum-${fragmentum_version}+${minecraft_version}-fabric")
+	modImplementation "curse.maven:fragmentum-fabric-1123974:8921951"
 	modApi("fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${config_version}")
 	modImplementation("dev.isxander:yet-another-config-lib:${yacl_version}+${minecraft_version}-fabric")
-	modImplementation "curse.maven:loot-journal-fabric-1120388:8141351"
+	modImplementation "curse.maven:loot-journal-fabric-1120388:8922054"
 	modImplementation "software.bernie.geckolib:geckolib-fabric-$rootProject.geckolib_version"
 	modImplementation "curse.maven:cobbledgacha-1419903:7787788"
 }
