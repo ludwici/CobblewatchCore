@@ -1,7 +1,7 @@
 plugins {
 	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
 	id 'maven-publish'
-	id 'org.jetbrains.kotlin.jvm' version '2.4.0'
+	id 'org.jetbrains.kotlin.jvm' version '2.4.21'
 }
 
 version = project.mod_version
@@ -45,8 +45,7 @@ dependencies {
 
 	modImplementation "com.cobblemon:fabric:$rootProject.cobblemon_version"
 
-//	modImplementation("dev.obscuria:fragmentum-${fragmentum_version}+${minecraft_version}-fabric")
-	modImplementation "curse.maven:fragmentum-fabric-1123974:8921951"
+	modImplementation "curse.maven:fragmentum-fabric-1123974:9202575"
 	modApi("fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${config_version}")
 	modImplementation("dev.isxander:yet-another-config-lib:${yacl_version}+${minecraft_version}-fabric")
 	modImplementation "curse.maven:loot-journal-fabric-1120388:8922054"
