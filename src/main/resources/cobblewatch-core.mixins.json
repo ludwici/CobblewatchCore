@@ -3,7 +3,9 @@
   "package": "com.ludwici.cobblewatchcore.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "server.CapsuleItemMixin"
+    "server.CapsuleItemMixin",
+    "cards.CobblemonCardsConfigMixin",
+    "cards.CardStatUtilMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -12,6 +14,7 @@
     "requireAnnotations": true
   },
   "client": [
-    "client.ClientPacketListenerMixin"
+    "client.ClientPacketListenerMixin",
+    "client.BinderScreenMixin"
   ]
 }

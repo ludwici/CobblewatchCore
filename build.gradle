@@ -51,6 +51,7 @@ dependencies {
 	modImplementation "curse.maven:loot-journal-fabric-1120388:8922054"
 	modImplementation "software.bernie.geckolib:geckolib-fabric-$rootProject.geckolib_version"
 	modImplementation "curse.maven:cobbledgacha-1419903:7787788"
+	modImplementation "curse.maven:cobblemon-cards-1565166:9795627"
 }
 
 processResources {
