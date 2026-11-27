@@ -15,6 +15,9 @@ public final class CoreMixinPlugin implements IMixinConfigPlugin {
         if (mixinClassName.startsWith("com.ludwici.cobblewatchcore.mixin.weather.")) {
             return FabricLoader.getInstance().getModContainer("osweather").map(mod -> mod.getMetadata().getVersion().getFriendlyString().equals("1.1")).orElse(false);
         }
+        if (mixinClassName.startsWith("com.ludwici.cobblewatchcore.mixin.rustlingspots.")) {
+            return FabricLoader.getInstance().getModContainer("rustlingspots").map(mod -> mod.getMetadata().getVersion().getFriendlyString().equals("6.0")).orElse(false);
+        }
         return true;
     }
 

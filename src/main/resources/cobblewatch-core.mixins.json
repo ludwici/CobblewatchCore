@@ -9,7 +9,8 @@
     "weather.AtmosphericStateMixin",
     "weather.WeatherScenarioMixin",
     "weather.ScenarioSelectorMixin",
-    "weather.WeatherEngineMixin"
+    "weather.WeatherEngineMixin",
+    "rustlingspots.SpotRewardResolverMixin"
   ],
   "injectors": {
     "defaultRequire": 1

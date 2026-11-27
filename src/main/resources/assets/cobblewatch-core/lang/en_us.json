@@ -1,0 +1,4 @@
+{
+  "message.cobblewatch-core.rustlingspots.shiny_find": "%1$s found a shiny rustling spot (%2$s)!",
+  "message.cobblewatch-core.rustlingspots.shiny_encounter": "%1$s found a shiny rustling spot (%2$s) and encountered a shiny %3$s!"
+}
