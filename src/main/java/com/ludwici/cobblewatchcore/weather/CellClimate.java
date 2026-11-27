@@ -68,7 +68,7 @@ public final class CellClimate {
             }
         }
         long seed = level.getSeed() ^ ((long) key.x() * 0x9E3779B97F4A7C15L) ^ ((long) key.z() * 0xD1B54A32D192ED03L);
-        FORESTS.put(result, new ForestClimate(forestWeight / 6.0F, seed));
+        FORESTS.put(result, new ForestClimate(forestWeight / 6.0F, seed, center.unwrapKey().map(value -> value.location().toString()).orElse("unknown")));
         CELLS.put(key, result);
         if (CELLS.size() > MAX_CACHED_CELLS) {
             FORESTS.remove(CELLS.remove(CELLS.keySet().iterator().next()));

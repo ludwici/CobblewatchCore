@@ -15,6 +15,7 @@ public class CobblewatchCore implements ModInitializer {
 		Payloads.register();
 		if (FabricLoader.getInstance().getModContainer("osweather").map(mod -> mod.getMetadata().getVersion().getFriendlyString().equals("1.1")).orElse(false)) {
 			CellClimate.register();
+			com.ludwici.cobblewatchcore.weather.WeatherDebug.register();
 		}
 	}
 

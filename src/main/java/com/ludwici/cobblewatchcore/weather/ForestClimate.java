@@ -6,9 +6,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 
-public record ForestClimate(float weight, long seed) {
+public record ForestClimate(float weight, long seed, String biome) {
 
-    public static final ForestClimate OPEN = new ForestClimate(1.0F, 0L);
+    public static final ForestClimate OPEN = new ForestClimate(1.0F, 0L, "unknown");
 
     private static final TagKey<Biome> FOREST = tag("minecraft:is_forest");
     private static final TagKey<Biome> COMMON_FOREST = tag("c:is_forest");

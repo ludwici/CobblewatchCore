@@ -53,6 +53,7 @@ dependencies {
 	modImplementation "curse.maven:cobbledgacha-1419903:7787788"
 	modImplementation "curse.maven:cobblemon-cards-1565166:9795627"
 	modCompileOnly "curse.maven:os-weather-1747393:9234977"
+	modCompileOnly "curse.maven:diorama-1748961:9721456"
 	modCompileOnly "curse.maven:rustling-spots-1392106:9328957"
 }
 
