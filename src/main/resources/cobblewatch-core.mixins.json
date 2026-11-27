@@ -5,7 +5,8 @@
   "mixins": [
     "server.CapsuleItemMixin",
     "cards.CobblemonCardsConfigMixin",
-    "cards.CardStatUtilMixin"
+    "cards.CardStatUtilMixin",
+    "weather.AtmosphericStateMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -16,5 +17,6 @@
   "client": [
     "client.ClientPacketListenerMixin",
     "client.BinderScreenMixin"
-  ]
+  ],
+  "plugin": "com.ludwici.cobblewatchcore.mixin.CoreMixinPlugin"
 }

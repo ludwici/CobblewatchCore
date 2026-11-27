@@ -52,6 +52,7 @@ dependencies {
 	modImplementation "software.bernie.geckolib:geckolib-fabric-$rootProject.geckolib_version"
 	modImplementation "curse.maven:cobbledgacha-1419903:7787788"
 	modImplementation "curse.maven:cobblemon-cards-1565166:9795627"
+	modCompileOnly "curse.maven:os-weather-1747393:9234977"
 }
 
 processResources {
