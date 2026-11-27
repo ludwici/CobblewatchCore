@@ -13,6 +13,7 @@ public class CobblewatchCore implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		Payloads.register();
+		org.slf4j.LoggerFactory.getLogger("CobblewatchWeather").info("Core weather debug revision 2 (Diorama diagnostics)");
 		if (FabricLoader.getInstance().getModContainer("osweather").map(mod -> mod.getMetadata().getVersion().getFriendlyString().equals("1.1")).orElse(false)) {
 			CellClimate.register();
 			com.ludwici.cobblewatchcore.weather.WeatherDebug.register();

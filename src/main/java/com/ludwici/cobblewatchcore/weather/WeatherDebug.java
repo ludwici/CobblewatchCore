@@ -36,12 +36,15 @@ public final class WeatherDebug {
 
     public static final String SOURCE = "cobblewatch-core:fog_debug";
     private static final Set<UUID> VIEWERS = new HashSet<>();
+    private static final Set<UUID> DISABLED = new HashSet<>();
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger("CobblewatchWeather");
     private static final Map<UUID, OverrideHandle> OVERRIDES = new HashMap<>();
 
     private WeatherDebug() {
     }
 
     public static void register() {
+        LOGGER.info("Registering /cwweather commands and weather debug tick handler");
         CommandRegistrationCallback.EVENT.register((dispatcher, registry, environment) -> dispatcher.register(
                 Commands.literal("cwweather").requires(source -> source.hasPermission(2))
                         .then(Commands.literal("debug")
@@ -56,6 +59,10 @@ public final class WeatherDebug {
                 return;
             }
             for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+                if (server.isSingleplayerOwner(player.getGameProfile()) && player.isCreative() && player.hasPermissions(2) && !DISABLED.contains(player.getUUID()) && !VIEWERS.contains(player.getUUID()) && ServerPlayNetworking.canSend(player, WeatherDebugPayload.TYPE)) {
+                    VIEWERS.add(player.getUUID());
+                    LOGGER.info("Automatically enabled weather debug for creative singleplayer owner {}", player.getGameProfile().getName());
+                }
                 if (VIEWERS.contains(player.getUUID())) {
                     if (!player.hasPermissions(2)) {
                         toggle(player, false);
@@ -67,25 +74,30 @@ public final class WeatherDebug {
         });
         ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
             VIEWERS.remove(handler.player.getUUID());
+            DISABLED.remove(handler.player.getUUID());
             release(handler.player.getUUID());
         });
         ServerLifecycleEvents.SERVER_STOPPING.register(server -> {
             VIEWERS.clear();
+            DISABLED.clear();
             OVERRIDES.values().forEach(OSWeather.api()::releaseOverride);
             OVERRIDES.clear();
         });
     }
 
     private static int toggle(ServerPlayer player, boolean enabled) {
+        LOGGER.info("Weather debug requested by {}: {} (receiver={})", player.getGameProfile().getName(), enabled, ServerPlayNetworking.canSend(player, WeatherDebugPayload.TYPE));
         if (enabled && !ServerPlayNetworking.canSend(player, WeatherDebugPayload.TYPE)) {
             player.sendSystemMessage(Component.literal("Weather debug requires CobblewatchCore on the client."));
             return 0;
         }
         if (enabled) {
+            DISABLED.remove(player.getUUID());
             VIEWERS.add(player.getUUID());
             send(player);
         } else {
             VIEWERS.remove(player.getUUID());
+            DISABLED.add(player.getUUID());
             if (ServerPlayNetworking.canSend(player, WeatherDebugPayload.TYPE)) {
                 ServerPlayNetworking.send(player, new WeatherDebugPayload(List.of()));
             }
@@ -100,6 +112,7 @@ public final class WeatherDebug {
         }
         MinecraftWeatherService service = MinecraftWeatherService.get(player.getServer());
         if (player.level().dimension() != Level.OVERWORLD || service == null || service.controller() == null) {
+            LOGGER.info("No weather debug cells: dimension={}, service={}, controller={}", player.level().dimension(), service != null, service != null && service.controller() != null);
             ServerPlayNetworking.send(player, new WeatherDebugPayload(List.of()));
             return;
         }
@@ -124,6 +137,7 @@ public final class WeatherDebug {
                 }
             }
         }
+        LOGGER.info("Sending {} weather debug cells to {}", cells.size(), player.getGameProfile().getName());
         ServerPlayNetworking.send(player, new WeatherDebugPayload(List.copyOf(cells)));
     }
 

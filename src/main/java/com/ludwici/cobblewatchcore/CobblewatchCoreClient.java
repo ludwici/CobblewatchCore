@@ -7,6 +7,7 @@ public class CobblewatchCoreClient implements ClientModInitializer {
     public void onInitializeClient() {
         if (net.fabricmc.loader.api.FabricLoader.getInstance().getModContainer("diorama").map(mod -> mod.getMetadata().getVersion().getFriendlyString().startsWith("0.11.0")).orElse(false)) {
             com.ludwici.cobblewatchcore.weather.DioramaWeatherDebug.register();
+            org.slf4j.LoggerFactory.getLogger("CobblewatchWeather").info("Diorama weather waypoint receiver registered");
         }
 
     }
