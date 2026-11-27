@@ -6,7 +6,10 @@
     "server.CapsuleItemMixin",
     "cards.CobblemonCardsConfigMixin",
     "cards.CardStatUtilMixin",
-    "weather.AtmosphericStateMixin"
+    "weather.AtmosphericStateMixin",
+    "weather.WeatherScenarioMixin",
+    "weather.ScenarioSelectorMixin",
+    "weather.WeatherEngineMixin"
   ],
   "injectors": {
     "defaultRequire": 1
