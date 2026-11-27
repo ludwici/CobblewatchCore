@@ -10,7 +10,8 @@
     "weather.WeatherScenarioMixin",
     "weather.ScenarioSelectorMixin",
     "weather.WeatherEngineMixin",
-    "rustlingspots.SpotRewardResolverMixin"
+    "rustlingspots.SpotRewardResolverMixin",
+    "weather.WeatherResolverMixin"
   ],
   "injectors": {
     "defaultRequire": 1

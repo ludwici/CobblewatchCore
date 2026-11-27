@@ -27,7 +27,7 @@ public final class WeatherBalance {
             case STORM -> scenario.extreme() ? (climate.arid() ? 0.4F : 2.5F) : (climate.arid() ? 0.2F : 0.65F);
             case COLD -> climate.cold() ? (id.contains("blizzard") ? 3.0F : 2.0F) : 0.7F;
             case DRY -> id.contains("sandstorm") ? 12.0F : id.contains("dusty") ? 4.5F : 0.85F;
-            case FOG -> id.contains("dissipation") ? 0.8F : climate.humid() ? 2.2F : climate.arid() ? 0.4F : 1.5F;
+            case FOG -> id.contains("dissipation") ? 0.8F : (climate.humid() ? 2.2F : climate.arid() ? 0.4F : 1.5F) * CellClimate.forest(climate).weight() * CellClimate.fogTimeWeight();
             case TRANSITION -> 0.8F;
         };
     }
